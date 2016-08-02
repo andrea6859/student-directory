@@ -38,11 +38,11 @@ def input_students
   def print(students)
   @selected_students = []
 
-    students.map do |student|
-      if student[:name].length < 12
+    students.each do |student|
+      if student[:name].length < 12 && student[:name][0] == "A" 
         @selected_students << student
-        @selected_students.each do |sel_student|
-        puts "#{sel_student[:name]}, from #{sel_student[:country]} in the (#{sel_student[:cohort]} cohort)".center(90)
+        @selected_students.each_with_index do |sel_student, index|
+        puts "#{index}: #{sel_student[:name]}, from #{sel_student[:country]} in the (#{sel_student[:cohort]} cohort)".center(90)
         end
       end
     end
