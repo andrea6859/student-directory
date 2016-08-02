@@ -9,30 +9,72 @@ end
 
 def input_students
   puts "Please enter the names of the students"
-  puts "To finish, just hit return three times"
+  puts "To finish, just hit return twice"
   students = []
-  name = gets.strip
-  puts "What cohort are they in?"
-  cohort = gets.strip
-  puts "What country are they from?"
-  country = gets.strip
+  name = gets.chomp
+  if !name.empty?
+    puts "What cohort is student in?"
+    cohort = gets.chomp
+    cohort = :August if cohort.empty?
+    puts "What country is student from?"
+    country = gets.chomp
+    country = :UK if country.empty?
+  end
   while !name.empty? do
     students << {name: name, cohort: cohort, country: country}
-    if students.count > 1
+    if students.count >1
       puts "Now we have #{students.count} students"
     else
-      puts "Now we have #{students.count} student"
+      puts "Now we have #{students.count} students"
     end
-    puts "Enter another name"
-    name = gets.strip
-    puts "cohort"
-    cohort = gets.strip
-    puts "country"
-    country = gets.strip
+    name = gets.chomp
+    if !name.empty?
+      puts "What cohort is student in?"
+      cohort = gets.chomp
+      cohort = :August if cohort.empty?
+      puts "What country is student from?"
+      country = gets.chomp
+      country = :UK if country.empty?
+    end
   end
-
   students
-  end
+end
+
+
+
+#def input_students
+#  puts "Please enter the names of the students"
+#  puts "To finish, just hit return three times"
+#  students = []
+#  name = gets.chomp
+#  puts "What cohort are they in?"
+#  cohort = gets.chomp
+#  cohort = :August if cohort.empty?
+#  puts "What country are they from?"
+#  country = gets.chomp
+#  country = :UK if country.empty?
+
+#  while !name.empty? do
+#    students << {name: name, cohort: cohort, country: country}
+#  end
+#nd
+#    if students.count > 1
+#      puts "Now we have #{students.count} students"
+#    else
+#      puts "Now we have #{students.count} student"
+#    end
+
+
+#    puts "Enter another name"
+#    name = gets.strip
+#    puts "cohort"
+#    cohort = gets.strip
+#    puts "country"
+#    country = gets.strip
+
+
+#  students
+#  end
 
   def print(students)
  i = 0
