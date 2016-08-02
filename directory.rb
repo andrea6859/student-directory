@@ -3,8 +3,8 @@
 
 #and then print them
 def print_header
-puts "The students of Villians Academy"
-puts "---------"
+puts "The students of Villians Academy".center(90)
+puts "---------".center(90)
 end
 
 def input_students
@@ -30,11 +30,10 @@ def input_students
     puts "country"
     country = gets.chomp
   end
-    #if cohort.empty? do students << {cohort: november}
-    #end
 
   students
   end
+
 
   def print(students)
   @selected_students = []
@@ -42,23 +41,21 @@ def input_students
     students.map do |student|
       if student[:name].length < 12
         @selected_students << student
-        @selected_students.each  do |sel_student|
-          puts "#{sel_student[:name]}, (#{sel_student[:cohort]} cohort)"
+        @selected_students.each do |sel_student|
+        puts "#{sel_student[:name]}, from #{sel_student[:country]} in the (#{sel_student[:cohort]} cohort)".center(90)
         end
       end
     end
   end
 
-  #def print_footer(students)
-  #  puts "Looks like we have #{@selected_students.size} student(s) that have less than 12 characters in their names"
-  #end
+
 
 
 def print_footer(students)
   if @selected_students.count >1
-puts "Overall, we have #{@selected_students.count} great students"
+puts "Overall, we have #{@selected_students.size} great students".center(90)
 else
- puts "Overall, we have #{@selected_students.count} great student"
+ puts "Overall, we have #{@selected_students.size} great student".center(90)
 end
 end
 
