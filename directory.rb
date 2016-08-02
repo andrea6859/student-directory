@@ -34,28 +34,38 @@ def input_students
   students
   end
 
-
   def print(students)
-  @selected_students = []
+ i = 0
+ while i < students.length
+   students.each_with_index do |student, index|
+       puts "#{index}: #{student[:name]}, from #{student[:country]} in the (#{student[:cohort]} cohort)".center(90)
+i += 1
+       end
+     end
+ end
 
-    students.each do |student|
-      if student[:name].length < 12 && student[:name][0] == "A" 
-        @selected_students << student
-        @selected_students.each_with_index do |sel_student, index|
-        puts "#{index}: #{sel_student[:name]}, from #{sel_student[:country]} in the (#{sel_student[:cohort]} cohort)".center(90)
-        end
-      end
-    end
-  end
+
+  #def print(students)
+ #@selected_students = []
+
+  # students.each do |student|
+  #   if student[:name].length < 12 && student[:name][0] == "A"
+  #     @selected_students << student
+  #   end
+  # end
+  #     @selected_students.each_with_index do |sel_student, index|
+  #     puts "#{index}: #{sel_student[:name]}, from #{sel_student[:country]} in the (#{sel_student[:cohort]} cohort)".center(90)
+  #     end
+ #end
 
 
 
 
 def print_footer(students)
-  if @selected_students.count >1
-puts "Overall, we have #{@selected_students.size} great students".center(90)
+  if students.count >1
+puts "Overall, we have #{students.size} great students".center(90)
 else
- puts "Overall, we have #{@selected_students.size} great student".center(90)
+ puts "Overall, we have #{students.size} great student".center(90)
 end
 end
 
