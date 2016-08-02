@@ -11,11 +11,11 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return three times"
   students = []
-  name = gets.chomp
+  name = gets.strip
   puts "What cohort are they in?"
-  cohort = gets.chomp
+  cohort = gets.strip
   puts "What country are they from?"
-  country = gets.chomp
+  country = gets.strip
   while !name.empty? do
     students << {name: name, cohort: cohort, country: country}
     if students.count > 1
@@ -24,11 +24,11 @@ def input_students
       puts "Now we have #{students.count} student"
     end
     puts "Enter another name"
-    name = gets.chomp
+    name = gets.strip
     puts "cohort"
-    cohort = gets.chomp
+    cohort = gets.strip
     puts "country"
-    country = gets.chomp
+    country = gets.strip
   end
 
   students
