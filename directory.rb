@@ -18,11 +18,11 @@ end
 
 def process(selection)
   case selection
-  when "1"; input_students
-  when "2"; show_students
-  when "9"; exit
-  when "3"; save_students
-  when "4"; load_students
+  when "1"; puts "Thank you. Option 1 selected: Input Students"; input_students
+  when "2"; puts "Thank you. Option 2 selected: Show the Students";show_students
+  when "9"; puts "Thank you. Option 9 selected: Goodbye!";exit
+  when "3"; puts "Thank you. Option 3 selected: Save students to students.csv";save_students
+  when "4"; puts "Thank you. Option 4 selected: Load students from students.csv";load_students
   else; puts "I don't know what you meant, try again"
   end
 end
