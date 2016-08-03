@@ -62,24 +62,25 @@ end
 def save_students
   puts "Enter file name"
   filename = STDIN.gets.chomp
-  file = File.open(filename, "w")
+  File.open(filename, "w") do |file|
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
   end
-  file.close
+end
+
 end
 
 def load_students
   puts "Enter file name to open"
   filename = STDIN.gets.chomp
-  file = File.open(filename, "r")
+  File.open(filename, "r") do |file|
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     @students << {name: name, cohort: cohort.to_sym}
   end
-  file.close
+end 
 end
 
 #def try_load_students
