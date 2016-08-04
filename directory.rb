@@ -1,5 +1,7 @@
 @students = []
 @name=()
+@cohort=()
+require 'csv'
 
 
 def print_menu
@@ -33,27 +35,31 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   @name = STDIN.gets.chomp
+  puts "Please enter the cohort"
+  @cohort=STDIN.gets.chomp
   while !@name.empty? do
     students_hash
     puts "Now we have #{@students.count} students"
+    puts "enter the next student"
     @name = STDIN.gets.chomp
+    puts "enter cohort"
+    @cohort=STDIN.gets.chomp
   end
 end
 
 def students_hash
-  @students << {name: @name, cohort: :november}
+  @students << {name: @name, cohort: @cohort}
 end
 
 def load_students
   puts "Enter file name to open"
   filename = STDIN.gets.chomp
-  File.open(filename, "r") do |file|
-  file.readlines.each do |line|
-  @name, cohort = line.chomp.split(',')
+  CSV.foreach(filename, "r") do |row|
+    @name, @cohort = row
     students_hash
   end
 end
-end
+
 
 def show_students
   print_header
@@ -79,11 +85,9 @@ end
 def save_students
   puts "Enter file name"
   filename = STDIN.gets.chomp
-  File.open(filename, "w") do |file|
+  CSV.open(filename, "w") do |csv|
   @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
+    csv << [student[:name], student[:cohort]]
   end
 end
 end
