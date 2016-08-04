@@ -1,4 +1,6 @@
 @students = []
+@name=()
+
 
 def print_menu
   puts "1. Input the students"
@@ -30,12 +32,27 @@ end
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
-  name = STDIN.gets.chomp
-  while !name.empty? do
-    @students << {name: name, cohort: :november}
+  @name = STDIN.gets.chomp
+  while !@name.empty? do
+    students_hash
     puts "Now we have #{@students.count} students"
-    name = STDIN.gets.chomp
+    @name = STDIN.gets.chomp
   end
+end
+
+def students_hash
+  @students << {name: @name, cohort: :november}
+end
+
+def load_students
+  puts "Enter file name to open"
+  filename = STDIN.gets.chomp
+  File.open(filename, "r") do |file|
+  file.readlines.each do |line|
+  @name, cohort = line.chomp.split(',')
+    students_hash
+  end
+end
 end
 
 def show_students
@@ -69,19 +86,10 @@ def save_students
     file.puts csv_line
   end
 end
-
 end
 
-def load_students
-  puts "Enter file name to open"
-  filename = STDIN.gets.chomp
-  File.open(filename, "r") do |file|
-  file.readlines.each do |line|
-  name, cohort = line.chomp.split(',')
-    @students << {name: name, cohort: cohort.to_sym}
-  end
-end 
-end
+
+
 
 #def try_load_students
 #  filename = ARGV.first
